@@ -29,7 +29,7 @@ jobs:
       - name: Better Test Reports Action
         uses: mridang/action-test-reporter@v1.3.0
         with:
-          github-token: ${{ secret.U_STOEM_MOEKE }}
+          github-token: ${{ secrets.U_STOEM_MOEKE }}
           working-directory: ./
           coverage-file: ./coverage/clover.xml
           upload-coverage-report: true
