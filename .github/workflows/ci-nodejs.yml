@@ -1,0 +1,37 @@
+name: CI Node.js
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with: 
+          repository: PXL-2TIN-DevOps-Resources/calculator-app-finished
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Unit Tests
+        run: npm test -- --coverage
+
+      - name: Better Test Reports Action
+        uses: mridang/action-test-reporter@v1.3.0
+        with:
+          github-token: ${{ secret.U_STOEM_MOEKE }}
+          working-directory: ./
+          coverage-file: ./coverage/clover.xml
+          upload-coverage-report: true
+          
+
