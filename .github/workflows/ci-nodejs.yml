@@ -29,7 +29,7 @@ jobs:
       - name: Better Test Reports Action
         uses: mridang/action-test-reporter@v1.3.0
         with:
-          github-token: # needs to be filled in
+          github-token: ${{ secrets.GH_TOKEN }}
           working-directory: ./
           coverage-file: ./coverage/clover.xml
           upload-coverage-report: true
